@@ -10,7 +10,7 @@ exports.verifyInvitation = functions.https.onRequest((request, response) => {
             response.status(200).send("OK");
         } else {
             console.log("wrong input:" + request.query.code);
-            response.status(400).send('not OK');
+            response.status(403).send('not OK');
         }
     }).catch(error => {
         console.log(erro);
