@@ -5,8 +5,6 @@ admin.initializeApp(functions.config().firebase);
 
 exports.verifyInvitation = functions.https.onRequest((request, response) => {
     response.header('Access-Control-Allow-Origin', '*');
-
-    //googla på firebase order ovan
     return admin.database().ref('config/invitation_code').once('value', (snapshot) => {
         if (snapshot.val() === request.query.code) {
             response.status(200).send("OK");
